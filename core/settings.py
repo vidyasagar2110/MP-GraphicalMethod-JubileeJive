@@ -12,9 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-your-secret-key-here')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = True  # Force DEBUG to True for development
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'jubileejive.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'events',
+    'events.apps.EventsConfig',
     'crispy_forms',
     'crispy_bootstrap5',
 ]
@@ -60,6 +60,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -67,6 +68,7 @@ DATABASES = {
     }
 }
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -82,6 +84,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -90,23 +93,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # WhiteNoise configuration
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+else:
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
+# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Crispy Forms Settings
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-# Security settings
-SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'True') == 'True'
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY' 
+# Security settings - Disable all security features in development
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_BROWSER_XSS_FILTER = False
+SECURE_CONTENT_TYPE_NOSNIFF = False
+X_FRAME_OPTIONS = 'SAMEORIGIN' 
