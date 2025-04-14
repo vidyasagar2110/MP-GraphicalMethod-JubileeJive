@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: jubileejive
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn core.wsgi:application
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: jubileejive.onrender.com
+      - key: SECURE_SSL_REDIRECT
+        value: True 
