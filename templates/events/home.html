@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to JubileeJive{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4 mb-4">Welcome to JubileeJive</h1>
+        <p class="lead mb-4">Professional event planning optimization platform that helps you make data-driven decisions</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'create_plan' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-calculator me-2"></i>Start Planning
+            </a>
+            <a href="{% url 'view_steps' %}" class="btn btn-outline-primary btn-lg">
+                <i class="fas fa-book me-2"></i>Learn More
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-list-ol"></i>
+                    </div>
+                    <h3 class="h4 mb-3">Step-by-Step Guide</h3>
+                    <p class="text-muted mb-4">Learn how our optimization algorithm works to maximize your event's potential.</p>
+                    <a href="{% url 'view_steps' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-arrow-right me-2"></i>View Steps
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="h4 mb-3">Optimization Tool</h3>
+                    <p class="text-muted mb-4">Input your constraints and let our algorithm find the optimal solution.</p>
+                    <a href="{% url 'create_plan' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-calculator me-2"></i>Start Solving
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="h4 mb-3">Real Applications</h3>
+                    <p class="text-muted mb-4">Discover how linear programming optimizes various aspects of event planning.</p>
+                    <a href="{% url 'view_applications' %}" class="btn btn-outline-primary">
+                        <i class="fas fa-external-link-alt me-2"></i>Explore More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <h2 class="section-title">Why Choose JubileeJive?</h2>
+            <div class="d-flex mb-4">
+                <div class="me-3">
+                    <i class="fas fa-chart-pie text-primary fa-2x"></i>
+                </div>
+                <div>
+                    <h4>Data-Driven Decisions</h4>
+                    <p class="text-muted">Make informed decisions based on mathematical optimization techniques.</p>
+                </div>
+            </div>
+            <div class="d-flex mb-4">
+                <div class="me-3">
+                    <i class="fas fa-bolt text-primary fa-2x"></i>
+                </div>
+                <div>
+                    <h4>Real-Time Solutions</h4>
+                    <p class="text-muted">Get instant results and visualizations for your event planning needs.</p>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="me-3">
+                    <i class="fas fa-shield-alt text-primary fa-2x"></i>
+                </div>
+                <div>
+                    <h4>Reliable Results</h4>
+                    <p class="text-muted">Trust in proven mathematical methods for optimal resource allocation.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="h4 mb-4">Quick Start Guide</h3>
+                    <ol class="list-unstyled">
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-circle me-3">1</span>
+                                <span>Enter your event details and constraints</span>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-circle me-3">2</span>
+                                <span>Choose your optimization objective</span>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-circle me-3">3</span>
+                                <span>Get optimal solution with visual representation</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-circle me-3">4</span>
+                                <span>Save and manage your event plans</span>
+                            </div>
+                        </li>
+                    </ol>
+                    <div class="text-center mt-4">
+                        <a href="{% url 'create_plan' %}" class="btn btn-primary">
+                            <i class="fas fa-rocket me-2"></i>Get Started Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.badge.rounded-circle {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.text-primary {
+    color: var(--accent-color) !important;
+}
+
+.bg-primary {
+    background-color: var(--accent-color) !important;
+}
+
+.btn-outline-primary {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+</style>
+{% endblock %} 

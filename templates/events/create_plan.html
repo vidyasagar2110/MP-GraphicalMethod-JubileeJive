@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Event Plan{% endblock %}
+
+{% block content %}
+<div class="hero-section mb-4">
+    <div class="container text-center">
+        <h1 class="display-5 fw-bold mb-2">Create Your Event Plan</h1>
+        <p class="lead">Turn your vision into a perfectly optimized event</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="card custom-card">
+                <div class="card-body p-4 p-md-5">
+                    <form method="POST" action="{% url 'create_plan' %}" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="form-section mb-5">
+                            <div class="section-header">
+                                <span class="section-icon">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                                <h3 class="section-title">Event Details</h3>
+                            </div>
+                            <div class="form-floating mb-4">
+                                {{ form.title }}
+                                <label for="{{ form.title.id_for_label }}">Event Title</label>
+                                {% if form.title.errors %}
+                                    <div class="invalid-feedback d-block">{{ form.title.errors }}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="form-floating mb-4">
+                                {{ form.total_budget }}
+                                <label for="{{ form.total_budget.id_for_label }}">Total Budget ($)</label>
+                                {% if form.total_budget.errors %}
+                                    <div class="invalid-feedback d-block">{{ form.total_budget.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-section mb-5">
+                            <div class="section-header">
+                                <span class="section-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </span>
+                                <h3 class="section-title">Cost Structure</h3>
+                            </div>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        {{ form.cost_per_guest }}
+                                        <label for="{{ form.cost_per_guest.id_for_label }}">Cost per Guest ($)</label>
+                                        {% if form.cost_per_guest.errors %}
+                                            <div class="invalid-feedback d-block">{{ form.cost_per_guest.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        {{ form.cost_per_entertainment }}
+                                        <label for="{{ form.cost_per_entertainment.id_for_label }}">Cost per Entertainment ($)</label>
+                                        {% if form.cost_per_entertainment.errors %}
+                                            <div class="invalid-feedback d-block">{{ form.cost_per_entertainment.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section mb-5">
+                            <div class="section-header">
+                                <span class="section-icon">
+                                    <i class="fas fa-users"></i>
+                                </span>
+                                <h3 class="section-title">Minimum Requirements</h3>
+                            </div>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        {{ form.min_guests }}
+                                        <label for="{{ form.min_guests.id_for_label }}">Minimum Guests</label>
+                                        {% if form.min_guests.errors %}
+                                            <div class="invalid-feedback d-block">{{ form.min_guests.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        {{ form.min_entertainment_units }}
+                                        <label for="{{ form.min_entertainment_units.id_for_label }}">Minimum Entertainment</label>
+                                        {% if form.min_entertainment_units.errors %}
+                                            <div class="invalid-feedback d-block">{{ form.min_entertainment_units.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section mb-5">
+                            <div class="section-header">
+                                <span class="section-icon">
+                                    <i class="fas fa-bullseye"></i>
+                                </span>
+                                <h3 class="section-title">Optimization Strategy</h3>
+                            </div>
+                            <div class="form-floating">
+                                {{ form.objective }}
+                                <label for="{{ form.objective.id_for_label }}">Select Objective</label>
+                                {% if form.objective.errors %}
+                                    <div class="invalid-feedback d-block">{{ form.objective.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-gradient btn-lg">
+                                <i class="fas fa-calculator me-2"></i>Generate Optimal Plan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+:root {
+    --primary: #4f46e5;
+    --primary-light: #818cf8;
+    --secondary: #64748b;
+    --accent: #06b6d4;
+    --text: #1e293b;
+    --bg-light: #f8fafc;
+    --bg-white: #ffffff;
+    --border: #e2e8f0;
+}
+
+.hero-section {
+    background: linear-gradient(120deg, #4f46e5 0%, #06b6d4 100%);
+    padding: 4rem 0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.1;
+}
+
+.custom-card {
+    background: var(--bg-white);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.section-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    border-radius: 12px;
+    margin-right: 1rem;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+
+.form-floating > .form-control,
+.form-floating > .form-select {
+    height: calc(3.5rem + 2px);
+    padding: 1rem 0.75rem;
+    font-size: 1rem;
+    background-color: var(--bg-light);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+
+.form-floating > .form-control:focus,
+.form-floating > .form-select:focus {
+    border-color: var(--primary);
+    background-color: var(--bg-white);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.form-floating > label {
+    padding: 1rem 0.75rem;
+    color: var(--secondary);
+}
+
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--primary);
+    transform: scale(0.85) translateY(-1rem) translateX(0.15rem);
+}
+
+.btn-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+}
+
+.btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(79, 70, 229, 0.3);
+    color: white;
+}
+
+.invalid-feedback {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.form-select option {
+    color: var(--text);
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .section-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
+
+/* Smooth Focus Animation */
+.form-control:focus,
+.form-select:focus {
+    animation: smoothFocus 0.3s ease-in-out;
+}
+
+@keyframes smoothFocus {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+}
+</style>
+{% endblock %} 

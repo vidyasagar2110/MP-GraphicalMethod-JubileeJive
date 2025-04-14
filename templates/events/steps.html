@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}Steps - Graphical Method{% endblock %}
+
+{% block content %}
+<div class="hero-section mb-4">
+    <h1 class="display-4 mb-3">Understanding the Graphical Method</h1>
+    <p class="lead">Learn how to solve linear programming problems graphically</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header bg-purple text-white">
+                    <h2 class="mb-0"><i class="fas fa-list-ol me-2"></i>Steps to Solve</h2>
+                </div>
+                <div class="card-body">
+                    <div class="step-list">
+                        <div class="step mb-4">
+                            <h3 class="text-purple"><i class="fas fa-1 me-2"></i>Define Variables</h3>
+                            <p>Let x = number of guests and y = number of entertainment units</p>
+                            <ul>
+                                <li>Total Budget = B</li>
+                                <li>Cost per Guest = Cx</li>
+                                <li>Cost per Entertainment Unit = Cy</li>
+                                <li>Minimum Guests Required = Gmin</li>
+                                <li>Minimum Entertainment Units = Emin</li>
+                            </ul>
+                        </div>
+
+                        <div class="step mb-4">
+                            <h3 class="text-purple"><i class="fas fa-2 me-2"></i>Write Constraints</h3>
+                            <p>The problem is subject to these constraints:</p>
+                            <ul>
+                                <li>Budget Constraint: Cx⋅x + Cy⋅y ≤ B</li>
+                                <li>Minimum Guests: x ≥ Gmin</li>
+                                <li>Minimum Entertainment: y ≥ Emin</li>
+                                <li>Non-negativity: x, y ≥ 0</li>
+                            </ul>
+                        </div>
+
+                        <div class="step mb-4">
+                            <h3 class="text-purple"><i class="fas fa-3 me-2"></i>Plot Constraints</h3>
+                            <p>Draw the following lines on a coordinate system:</p>
+                            <ul>
+                                <li>Budget line: Cx⋅x + Cy⋅y = B</li>
+                                <li>Minimum guests line: x = Gmin</li>
+                                <li>Minimum entertainment line: y = Emin</li>
+                            </ul>
+                        </div>
+
+                        <div class="step mb-4">
+                            <h3 class="text-purple"><i class="fas fa-4 me-2"></i>Identify Feasible Region</h3>
+                            <p>The feasible region is the area that satisfies all constraints:</p>
+                            <ul>
+                                <li>Above the minimum entertainment line</li>
+                                <li>Right of the minimum guests line</li>
+                                <li>Below the budget line</li>
+                            </ul>
+                        </div>
+
+                        <div class="step mb-4">
+                            <h3 class="text-purple"><i class="fas fa-5 me-2"></i>Find Corner Points</h3>
+                            <p>Identify the corner points of the feasible region:</p>
+                            <ul>
+                                <li>Point at minimum guests and minimum entertainment</li>
+                                <li>Intersection of budget line with minimum entertainment line</li>
+                                <li>Intersection of budget line with minimum guests line</li>
+                            </ul>
+                        </div>
+
+                        <div class="step mb-4">
+                            <h3 class="text-purple"><i class="fas fa-6 me-2"></i>Find Optimal Solution</h3>
+                            <p>Based on the objective:</p>
+                            <ul>
+                                <li>For maximum guests: Choose point with largest x-coordinate</li>
+                                <li>For maximum entertainment: Choose point with largest y-coordinate</li>
+                                <li>For balanced approach: Normalize and weight both objectives equally</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="{% url 'create_plan' %}" class="btn btn-primary me-2">
+                    <i class="fas fa-calculator me-2"></i>Try Solving
+                </a>
+                <a href="{% url 'home' %}" class="btn btn-outline-light">
+                    <i class="fas fa-home me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.bg-purple {
+    background-color: #5a2c8d;
+}
+.text-purple {
+    color: #5a2c8d;
+}
+.step {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(90, 44, 141, 0.05);
+}
+.step:hover {
+    background-color: rgba(90, 44, 141, 0.1);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+.btn-primary {
+    background-color: #5a2c8d;
+    border-color: #5a2c8d;
+}
+.btn-primary:hover {
+    background-color: #4a2473;
+    border-color: #4a2473;
+}
+</style>
+{% endblock %} 

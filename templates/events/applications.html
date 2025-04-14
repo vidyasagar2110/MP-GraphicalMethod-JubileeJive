@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %}Applications - Event Planning{% endblock %}
+
+{% block content %}
+<div class="hero-section mb-4">
+    <h1 class="display-4 mb-3">Applications in Event Planning</h1>
+    <p class="lead">Discover how linear programming optimizes various aspects of event management</p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header bg-purple text-white">
+                    <h2 class="mb-0"><i class="fas fa-lightbulb me-2"></i>Real-World Applications</h2>
+                </div>
+                <div class="card-body">
+                    <div class="application-list">
+                        <div class="application mb-4">
+                            <h3 class="text-purple"><i class="fas fa-utensils me-2"></i>Catering Optimization</h3>
+                            <p>Optimize food and beverage quantities while considering:</p>
+                            <ul>
+                                <li>Different dietary requirements</li>
+                                <li>Cost per meal type</li>
+                                <li>Minimum nutritional requirements</li>
+                                <li>Storage and preparation constraints</li>
+                            </ul>
+                        </div>
+
+                        <div class="application mb-4">
+                            <h3 class="text-purple"><i class="fas fa-chair me-2"></i>Seating Arrangement</h3>
+                            <p>Optimize seating layouts considering:</p>
+                            <ul>
+                                <li>Room dimensions and capacity</li>
+                                <li>Different table sizes and shapes</li>
+                                <li>Required spacing between tables</li>
+                                <li>Special seating requirements</li>
+                            </ul>
+                        </div>
+
+                        <div class="application mb-4">
+                            <h3 class="text-purple"><i class="fas fa-clock me-2"></i>Schedule Optimization</h3>
+                            <p>Optimize event timeline considering:</p>
+                            <ul>
+                                <li>Activity durations</li>
+                                <li>Resource availability</li>
+                                <li>Setup and breakdown times</li>
+                                <li>Concurrent sessions management</li>
+                            </ul>
+                        </div>
+
+                        <div class="application mb-4">
+                            <h3 class="text-purple"><i class="fas fa-truck me-2"></i>Vendor Management</h3>
+                            <p>Optimize vendor selection and scheduling:</p>
+                            <ul>
+                                <li>Vendor costs and capacities</li>
+                                <li>Service quality ratings</li>
+                                <li>Delivery and setup timing</li>
+                                <li>Backup vendor requirements</li>
+                            </ul>
+                        </div>
+
+                        <div class="application mb-4">
+                            <h3 class="text-purple"><i class="fas fa-dollar-sign me-2"></i>Budget Allocation</h3>
+                            <p>Optimize budget distribution across:</p>
+                            <ul>
+                                <li>Venue and equipment costs</li>
+                                <li>Entertainment and activities</li>
+                                <li>Marketing and promotion</li>
+                                <li>Staff and security</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="{% url 'create_plan' %}" class="btn btn-primary me-2">
+                    <i class="fas fa-calculator me-2"></i>Try Optimization
+                </a>
+                <a href="{% url 'home' %}" class="btn btn-outline-light">
+                    <i class="fas fa-home me-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.bg-purple {
+    background-color: #5a2c8d;
+}
+.text-purple {
+    color: #5a2c8d;
+}
+.application {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(90, 44, 141, 0.05);
+}
+.application:hover {
+    background-color: rgba(90, 44, 141, 0.1);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+.btn-primary {
+    background-color: #5a2c8d;
+    border-color: #5a2c8d;
+}
+.btn-primary:hover {
+    background-color: #4a2473;
+    border-color: #4a2473;
+}
+</style>
+{% endblock %} 
