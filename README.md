@@ -25,7 +25,7 @@ python -m venv myenv
 source myenv/bin/activate  # On Windows: myenv\Scripts\activate
 ```
 
-3. Install dependencies:
+3. Install Dependencies:
 ```bash
 pip install -r requirements.txt
 ```
